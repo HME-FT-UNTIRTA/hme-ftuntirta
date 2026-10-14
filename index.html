@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HME FT UNTIRTA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;800&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="dist/img/logo.png">
+  <!-- CSS hasil build Tailwind v4 -->
+  <link rel="stylesheet" href="dist/css/style.css" />
+</head>
+
+<body class="font-display antialiased">
+  <!-- NAVBAR Start -->
+  <header id="navbar" class="fixed inset-x-0 top-0 z-50 transition-colors duration-300">
+    <nav class="relative mx-auto flex h-16 max-w-6xl items-center justify-between px-6" aria-label="Navigasi utama">
+      <!-- Kiri: logo + nama kabinet -->
+      <a href="#beranda" class="flex items-center gap-3">
+        <img id="nav-logo" src="dist/img/hme-ftuntirta.png" alt="Logo HME FT UNTIRTA" class="h-10 w-10 object-contain" />
+        <span class="text-navy hidden text-lg font-semibold tracking-wide md:inline">Kabinet Novatera</span>
+      </a>
+ 
+      <!-- Menu desktop (tepat di tengah navbar) -->
+      <ul class="desktop-menu absolute left-1/2 hidden -translate-x-1/2 items-center gap-10 md:flex">
+        <li><a href="#beranda" class="nav-link">Beranda</a></li>
+        <li><a href="#tentang" class="nav-link">Tentang</a></li>
+        <li><a href="#program" class="nav-link">Program</a></li>
+        <li><a href="#kontak"  class="nav-link">Kontak</a></li>
+      </ul>
+ 
+      <!-- Tombol menu mobile -->
+      <button
+        id="menu-toggle"
+        type="button"
+        class="rounded-md p-2 text-navy focus:outline-none focus-visible:ring-2 focus-visible:ring-navy md:hidden"
+        aria-label="Buka menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+          <path id="icon-open"  stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16" />
+          <path id="icon-close" stroke-linecap="round" d="M6 6l12 12M18 6L6 18" class="hidden" />
+        </svg>
+      </button>
+    </nav>
+ 
+    <!-- Menu mobile -->
+    <div id="mobile-menu" class="hidden border-t border-navy/10 bg-cream px-6 py-4 text-navy md:hidden">
+      <ul class="flex flex-col gap-4">
+        <li><a href="#beranda" class="nav-link">Beranda</a></li>
+        <li><a href="#tentang" class="nav-link">Tentang</a></li>
+        <li><a href="#program" class="nav-link">Program</a></li>
+        <li><a href="#kontak"  class="nav-link">Kontak</a></li>
+      </ul>
+    </div>
+  </header>
+  <!-- Navbar End -->
+
+  <!-- HERO SECTION -->
+  <section
+    id="beranda"
+    class="relative flex min-h-screen items-center justify-center bg-gray-900 bg-cover bg-center bg-no-repeat"
+    style="background-image: url('dist/img/hero.jpg');"
+  >
+    <div class="relative z-10 mx-auto max-w-4xl px-6 text-center text-navy">
+      <h1 class="hero-item text-4xl font-extrabold tracking-wide drop-shadow-lg sm:text-6xl lg:text-7xl">
+        HME FT UNTIRTA
+      </h1>
+      <p class="hero-item mt-4 text-xl font-semibold text-brand sm:text-2xl lg:text-3xl">
+        #ElektroJOSS
+      </p>
+      <a
+        href="#tentang"
+        class="hero-item mt-8 inline-block rounded-full bg-brand px-8 py-3 font-semibold text-gray-900 shadow-lg transition duration-300 hover:bg-brand-light hover:shadow-xl focus:outline-none focus-visible:ring-4 focus-visible:ring-brand-light/60"
+      >
+        Tentang Kami
+      </a>
+    </div>
+  </section>
+
+<!-- About Section -->
+ <section id="tentang" class="bg-cream px-6 pb-24 pt-28 text-navy">
+    <div class="mx-auto max-w-6xl">
+ 
+      <!-- Judul & slogan -->
+      <header class="reveal text-center">
+        <h2 class="text-3xl font-bold sm:text-4xl lg:text-5xl">Tentang HME FT Untirta</h2>
+        <p class="mt-3 text-base font-normal sm:text-lg">Jujur, Optimis, Semangat, Sinergis</p>
+      </header>
+ 
+      <!-- Dua card: Visi & Misi | Deskripsi Himpunan -->
+      <div class="mt-14 grid gap-6 md:grid-cols-2 lg:gap-8">
+ 
+        <article class="reveal rounded-2xl border border-navy/10 bg-white p-8 shadow-sm" style="--d: 0ms">
+          <h3 class="text-xl font-bold sm:text-2xl">Visi dan Misi</h3>
+          <span class="mt-2 block h-1 w-12 rounded-full bg-brand"></span>
+ 
+          <h4 class="mt-6 font-semibold">Visi</h4>
+          <p class="mt-2 leading-relaxed">
+            &ldquo;Mewujudkan Himpunan Mahasiswa Elektro yang saling mendukung, aspiratif, dan berintegritas dengan memperkuat budaya kolaborasi, keterbukaan, dan kekeluargaan agar tercipta lingkungan organisasi yang harmonis dan berkelanjutan&rdquo;
+          </p>
+ 
+          <h4 class="mt-6 font-semibold">Misi</h4>
+          <ul class="mt-2 list-disc space-y-3 pl-5 leading-relaxed marker:text-navy">
+            <li>Menumbuhkan lingkungan organisasi yang suportif dengan mengutamakan rasa saling peduli dan kebersamaan di antara seluruh pengurus HME.</li>
+            <li>Mendorong komunikasi yang terbuka dan transparan dalam setiap proses organisasi guna menciptakan hubungan yang harmonis antara HME, KBM Elektro, dan civitas akademika.</li>
+            <li>Mengoptimalkan peran himpunan sebagai wadah penyampaian aspirasi yang responsif, agar setiap suara mahasiswa dapat ditindaklanjuti secara efektif.</li>
+          </ul>
+        </article>
+ 
+        <article class="reveal rounded-2xl border border-navy/10 bg-white p-8 shadow-sm" style="--d: 150ms">
+          <h3 class="text-xl font-bold sm:text-2xl">Deskripsi Himpunan</h3>
+          <span class="mt-2 block h-1 w-12 rounded-full bg-brand"></span>
+ 
+          <p class="mt-6 leading-relaxed">
+            Himpunan Mahasiswa Elektro (HME) merupakan sebuah organisasi kemahasiswaan yang telah berdiri sejak tahun 1989 dan terus eksis hingga saat ini. Organisasi ini menjadi wadah bagi seluruh mahasiswa Program Studi Teknik Elektro Universitas Sultan Ageng Tirtayasa (Untirta) untuk berkumpul, berproses, dan berkembang bersama. HME hadir sebagai ruang untuk menyalurkan aspirasi, mengembangkan potensi, serta mempererat hubungan antaranggota melalui semangat kekeluargaan yang tinggi.
+          </p>
+          <p class="mt-4 leading-relaxed">
+            Dalam setiap langkah dan kegiatannya, HME selalu mengedepankan kebersamaan, nilai-nilai solidaritas, serta kepentingan kolektif demi kemajuan bersama. Seiring berjalannya waktu, HME terus berinovasi dan beradaptasi dengan perkembangan zaman, tanpa melupakan jati diri dan semangat perjuangan yang telah diwariskan sejak awal berdirinya.
+          </p>
+        </article>
+      </div>
+ 
+      <!-- Departemen -->
+      <div class="mt-20">
+        <h3 class="reveal text-center text-2xl font-bold sm:text-3xl">Struktur Organisasi</h3>
+        <div id="departemen" class="mt-10 flex flex-wrap justify-center gap-6">
+      
+          
+          <!-- BPH -->
+          <article tabindex="0" class="reveal dept-card group relative aspect-4/5 w-full overflow-hidden rounded-2xl bg-navy/10 shadow-sm sm:w-[calc(50%-0.75rem)] lg:w-[calc(25%-1.125rem)]" style="--d: 0ms">
+            <img src="dist/img/bph.jpeg" alt="Badan Pengurus Harian" loading="lazy" class="dept-img absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+            <div class="dept-overlay absolute inset-0"></div>
+            <h4 class="dept-name absolute inset-x-0 bottom-0 p-5 text-center text-lg font-bold text-white">Badan Pengurus Harian</h4>
+          </article>
+          <!-- BPH -->
+
+          <!-- Kestari -->
+          <article tabindex="0" class="reveal dept-card group relative aspect-4/5 w-full overflow-hidden rounded-2xl bg-navy/10 shadow-sm sm:w-[calc(50%-0.75rem)] lg:w-[calc(25%-1.125rem)]" style="--d: 100ms">
+            <img src="dist/img/kestari.jpeg" alt="Kesekretariatan" loading="lazy" class="dept-img absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+            <div class="dept-overlay absolute inset-0"></div>
+            <h4 class="dept-name absolute inset-x-0 bottom-0 p-5 text-center text-lg font-bold text-white">Kesekretariatan</h4>
+          </article>
+          <!-- Kestari -->
+
+          <!-- BUME -->
+          <article tabindex="0" class="reveal dept-card group relative aspect-4/5 w-full overflow-hidden rounded-2xl bg-navy/10 shadow-sm sm:w-[calc(50%-0.75rem)] lg:w-[calc(25%-1.125rem)]" style="--d: 200ms">
+            <img src="dist/img/bume.jpeg" alt="BUME" loading="lazy" class="dept-img absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+            <div class="dept-overlay absolute inset-0"></div>
+            <h4 class="dept-name absolute inset-x-0 bottom-0 p-5 text-center text-lg font-bold text-white">BUME</h4>
+          </article>
+          <!-- BUME -->
+          
+          <!-- Kaderisasi -->
+          <article tabindex="0" class="reveal dept-card group relative aspect-4/5 w-full overflow-hidden rounded-2xl bg-navy/10 shadow-sm sm:w-[calc(50%-0.75rem)] lg:w-[calc(25%-1.125rem)]" style="--d: 300ms">
+            <img src="dist/img/kaderisasi.jpeg" alt="Kaderisasi" loading="lazy" class="dept-img absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+            <div class="dept-overlay absolute inset-0"></div>
+            <h4 class="dept-name absolute inset-x-0 bottom-0 p-5 text-center text-lg font-bold text-white">Kaderisasi</h4>
+          </article>
+          <!-- Kaderisasi -->
+
+          <!-- Internal -->
+          <article tabindex="0" class="reveal dept-card group relative aspect-4/5 w-full overflow-hidden rounded-2xl bg-navy/10 shadow-sm sm:w-[calc(50%-0.75rem)] lg:w-[calc(25%-1.125rem)]" style="--d: 0ms">
+            <img src="dist/img/internal.jpeg" alt="Internal" loading="lazy" class="dept-img absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+            <div class="dept-overlay absolute inset-0"></div>
+            <h4 class="dept-name absolute inset-x-0 bottom-0 p-5 text-center text-lg font-bold text-white">Internal</h4>
+          </article>
+          <!-- Internal -->
+
+          <!-- Eksternal -->
+          <article tabindex="0" class="reveal dept-card group relative aspect-4/5 w-full overflow-hidden rounded-2xl bg-navy/10 shadow-sm sm:w-[calc(50%-0.75rem)] lg:w-[calc(25%-1.125rem)]" style="--d: 100ms">
+            <img src="dist/img/eksternal.jpeg" alt="PSDM" loading="lazy" class="dept-img absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+            <div class="dept-overlay absolute inset-0"></div>
+            <h4 class="dept-name absolute inset-x-0 bottom-0 p-5 text-center text-lg font-bold text-white">Eksternal</h4>
+          </article>
+          <!-- Eksternal -->
+
+          <!-- PSDM -->
+          <article tabindex="0" class="reveal dept-card group relative aspect-4/5 w-full overflow-hidden rounded-2xl bg-navy/10 shadow-sm sm:w-[calc(50%-0.75rem)] lg:w-[calc(25%-1.125rem)]" style="--d: 200ms">
+            <img src="dist/img/psdm.jpeg" alt="PSDM" loading="lazy" class="dept-img absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+            <div class="dept-overlay absolute inset-0"></div>
+            <h4 class="dept-name absolute inset-x-0 bottom-0 p-5 text-center text-lg font-bold text-white">PSDM</h4>
+          </article>
+          <!-- PSDM -->
+
+          <!-- Medfokom -->
+          <article tabindex="0" class="reveal dept-card group relative aspect-4/5 w-full overflow-hidden rounded-2xl bg-navy/10 shadow-sm sm:w-[calc(50%-0.75rem)] lg:w-[calc(25%-1.125rem)]" style="--d: 300ms">
+            <img src="dist/img/medfokom.jpeg" alt="Medfokom" loading="lazy" class="dept-img absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+            <div class="dept-overlay absolute inset-0"></div>
+            <h4 class="dept-name absolute inset-x-0 bottom-0 p-5 text-center text-lg font-bold text-white">Medfokom</h4>
+          </article>
+          <!-- Medfokom -->
+        </div>
+      </div>
+ 
+    </div>
+  </section>
+
+  <section id="program" class="bg-cream px-6 pb-24 pt-28 text-navy">
+    <div class="mx-auto max-w-6xl">
+ 
+      <header class="reveal text-center">
+        <h2 class="text-3xl font-bold sm:text-4xl lg:text-5xl">Program</h2>
+      </header>
+ 
+      <!-- 12 card: 2 kolom x 6 baris. Tiap card bisa digeser (slide) -->
+      <div class="mt-14 grid gap-6 md:grid-cols-2">
+ 
+        <!-- Rapat Kerja -->
+        <article class="reveal program-card group overflow-hidden rounded-2xl bg-white shadow-sm" style="--d: 0ms">
+          <div class="relative">
+            <div class="slider flex aspect-video w-full snap-x snap-mandatory overflow-x-auto bg-navy/10">
+              <img src="dist/img/email.png" alt="Dokumentasi Program 01 - foto 1" loading="lazy" class="program-img h-full w-full shrink-0 snap-center object-cover" />
+              <img src="dist/img/claude.png" alt="Dokumentasi Program 01 - foto 2" loading="lazy" class="program-img h-full w-full shrink-0 snap-center object-cover" />
+              <img src="dist/img/claude.png" alt="Dokumentasi Program 01 - foto 3" loading="lazy" class="program-img h-full w-full shrink-0 snap-center object-cover" />
+              <img src="dist/img/claude.png" alt="Dokumentasi Program 01 - foto 3" loading="lazy" class="program-img h-full w-full shrink-0 snap-center object-cover" />
+              <img src="dist/img/claude.png" alt="Dokumentasi Program 01 - foto 3" loading="lazy" class="program-img h-full w-full shrink-0 snap-center object-cover" />
+              <img src="dist/img/claude.png" alt="Dokumentasi Program 01 - foto 3" loading="lazy" class="program-img h-full w-full shrink-0 snap-center object-cover" />
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold">Rapat Kerja HME FT UNTIRTA 2026</h3>
+            <p class="mt-2 leading-relaxed">Rapat Kerja HME FT UNTIRTA 2026</p>
+          </div>
+        </article>
+ 
+        <!-- Studi Banding -->
+        <article class="reveal program-card group overflow-hidden rounded-2xl bg-white shadow-sm" style="--d: 100ms">
+          <div class="relative">
+            <div class="slider flex aspect-video w-full snap-x snap-mandatory overflow-x-auto bg-navy/10">
+              <img src="dist/img/program/program-02-1.jpg" alt="Dokumentasi Program 02 - foto 1" loading="lazy" class="program-img h-full w-full shrink-0 snap-center object-cover" />
+              <img src="dist/img/program/program-02-2.jpg" alt="Dokumentasi Program 02 - foto 2" loading="lazy" class="program-img h-full w-full shrink-0 snap-center object-cover" />
+              <img src="dist/img/program/program-02-3.jpg" alt="Dokumentasi Program 02 - foto 3" loading="lazy" class="program-img h-full w-full shrink-0 snap-center object-cover" />
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold">Studi Banding HME FT UNTIRTA X HME FTI USAKTI</h3>
+            <p class="mt-2 leading-relaxed">Deskripsi singkat program kerja.</p>
+          </div>
+        </article>
+ 
+        <!-- Program 03 -->
+        <article class="reveal program-card group overflow-hidden rounded-2xl bg-white shadow-sm" style="--d: 0ms">
+          <div class="relative">
+            <div class="slider flex aspect-video w-full snap-x snap-mandatory overflow-x-auto bg-navy/10">
+              <img src="dist/img/program/program-03-1.jpg" alt="Dokumentasi Program 03 - foto 1" loading="lazy" class="program-img h-full w-full shrink-0 snap-center object-cover" />
+              <img src="dist/img/program/program-03-2.jpg" alt="Dokumentasi Program 03 - foto 2" loading="lazy" class="program-img h-full w-full shrink-0 snap-center object-cover" />
+              <img src="dist/img/program/program-03-3.jpg" alt="Dokumentasi Program 03 - foto 3" loading="lazy" class="program-img h-full w-full shrink-0 snap-center object-cover" />
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold">Belajar Bareng Mahasiswa Elektro</h3>
+            <p class="mt-2 leading-relaxed">Deskripsi singkat program kerja.</p>
+          </div>
+        </article>
+ 
+        <!-- Program 04 -->
+        <article class="reveal program-card group overflow-hidden rounded-2xl bg-white shadow-sm" style="--d: 100ms">
+          <div class="relative">
+            <div class="slider flex aspect-video w-full snap-x snap-mandatory overflow-x-auto bg-navy/10">
+              <img src="dist/img/program/program-04-1.jpg" alt="Dokumentasi Program 04 - foto 1" loading="lazy" class="program-img h-full w-full shrink-0 snap-center object-cover" />
+              <img src="dist/img/program/program-04-2.jpg" alt="Dokumentasi Program 04 - foto 2" loading="lazy" class="program-img h-full w-full shrink-0 snap-center object-cover" />
+              <img src="dist/img/program/program-04-3.jpg" alt="Dokumentasi Program 04 - foto 3" loading="lazy" class="program-img h-full w-full shrink-0 snap-center object-cover" />
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold">Elektro Main Bareng</h3>
+            <p class="mt-2 leading-relaxed">Deskripsi singkat program kerja.</p>
+          </div>
+        </article>
+ 
+        <!-- Program 05 -->
+        <article class="reveal program-card group overflow-hidden rounded-2xl bg-white shadow-sm" style="--d: 0ms">
+          <div class="relative">
+            <div class="slider flex aspect-video w-full snap-x snap-mandatory overflow-x-auto bg-navy/10">
+              <img src="dist/img/program/program-05-1.jpg" alt="Dokumentasi Program 05 - foto 1" loading="lazy" class="program-img h-full w-full shrink-0 snap-center object-cover" />
+              <img src="dist/img/program/program-05-2.jpg" alt="Dokumentasi Program 05 - foto 2" loading="lazy" class="program-img h-full w-full shrink-0 snap-center object-cover" />
+              <img src="dist/img/program/program-05-3.jpg" alt="Dokumentasi Program 05 - foto 3" loading="lazy" class="program-img h-full w-full shrink-0 snap-center object-cover" />
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold">Explore Alumni Teknik Elektro</h3>
+            <p class="mt-2 leading-relaxed">Deskripsi singkat program kerja.</p>
+          </div>
+        </article>
+ 
+        <!-- Program 06 -->
+        <article class="reveal program-card group overflow-hidden rounded-2xl bg-white shadow-sm" style="--d: 100ms">
+          <div class="relative">
+            <div class="slider flex aspect-video w-full snap-x snap-mandatory overflow-x-auto bg-navy/10">
+              <img src="dist/img/program/program-06-1.jpg" alt="Dokumentasi Program 06 - foto 1" loading="lazy" class="program-img h-full w-full shrink-0 snap-center object-cover" />
+              <img src="dist/img/program/program-06-2.jpg" alt="Dokumentasi Program 06 - foto 2" loading="lazy" class="program-img h-full w-full shrink-0 snap-center object-cover" />
+              <img src="dist/img/program/program-06-3.jpg" alt="Dokumentasi Program 06 - foto 3" loading="lazy" class="program-img h-full w-full shrink-0 snap-center object-cover" />
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold">Elektro Goes To School</h3>
+            <p class="mt-2 leading-relaxed">Deskripsi singkat program kerja.</p>
+          </div>
+        </article>
+ 
+        <!-- Program 07 -->
+        <article class="reveal program-card group overflow-hidden rounded-2xl bg-white shadow-sm" style="--d: 0ms">
+          <div class="relative">
+            <div class="slider flex aspect-video w-full snap-x snap-mandatory overflow-x-auto bg-navy/10">
+              <img src="dist/img/program/program-07-1.jpg" alt="Dokumentasi Program 07 - foto 1" loading="lazy" class="program-img h-full w-full shrink-0 snap-center object-cover" />
+              <img src="dist/img/program/program-07-2.jpg" alt="Dokumentasi Program 07 - foto 2" loading="lazy" class="program-img h-full w-full shrink-0 snap-center object-cover" />
+              <img src="dist/img/program/program-07-3.jpg" alt="Dokumentasi Program 07 - foto 3" loading="lazy" class="program-img h-full w-full shrink-0 snap-center object-cover" />
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold">Nama Program 07</h3>
+            <p class="mt-2 leading-relaxed">Deskripsi singkat program kerja.</p>
+          </div>
+        </article>
+ 
+        <!-- Program 08 -->
+        <article class="reveal program-card group overflow-hidden rounded-2xl bg-white shadow-sm" style="--d: 100ms">
+          <div class="relative">
+            <div class="slider flex aspect-video w-full snap-x snap-mandatory overflow-x-auto bg-navy/10">
+              <img src="dist/img/program/program-08-1.jpg" alt="Dokumentasi Program 08 - foto 1" loading="lazy" class="program-img h-full w-full shrink-0 snap-center object-cover" />
+              <img src="dist/img/program/program-08-2.jpg" alt="Dokumentasi Program 08 - foto 2" loading="lazy" class="program-img h-full w-full shrink-0 snap-center object-cover" />
+              <img src="dist/img/program/program-08-3.jpg" alt="Dokumentasi Program 08 - foto 3" loading="lazy" class="program-img h-full w-full shrink-0 snap-center object-cover" />
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold">Nama Program 08</h3>
+            <p class="mt-2 leading-relaxed">Deskripsi singkat program kerja.</p>
+          </div>
+        </article>
+ 
+        <!-- Program 09 -->
+        <article class="reveal program-card group overflow-hidden rounded-2xl bg-white shadow-sm" style="--d: 0ms">
+          <div class="relative">
+            <div class="slider flex aspect-video w-full snap-x snap-mandatory overflow-x-auto bg-navy/10">
+              <img src="dist/img/program/program-09-1.jpg" alt="Dokumentasi Program 09 - foto 1" loading="lazy" class="program-img h-full w-full shrink-0 snap-center object-cover" />
+              <img src="dist/img/program/program-09-2.jpg" alt="Dokumentasi Program 09 - foto 2" loading="lazy" class="program-img h-full w-full shrink-0 snap-center object-cover" />
+              <img src="dist/img/program/program-09-3.jpg" alt="Dokumentasi Program 09 - foto 3" loading="lazy" class="program-img h-full w-full shrink-0 snap-center object-cover" />
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold">Nama Program 09</h3>
+            <p class="mt-2 leading-relaxed">Deskripsi singkat program kerja.</p>
+          </div>
+        </article>
+ 
+        <!-- Program 10 -->
+        <article class="reveal program-card group overflow-hidden rounded-2xl bg-white shadow-sm" style="--d: 100ms">
+          <div class="relative">
+            <div class="slider flex aspect-video w-full snap-x snap-mandatory overflow-x-auto bg-navy/10">
+              <img src="dist/img/program/program-10-1.jpg" alt="Dokumentasi Program 10 - foto 1" loading="lazy" class="program-img h-full w-full shrink-0 snap-center object-cover" />
+              <img src="dist/img/program/program-10-2.jpg" alt="Dokumentasi Program 10 - foto 2" loading="lazy" class="program-img h-full w-full shrink-0 snap-center object-cover" />
+              <img src="dist/img/program/program-10-3.jpg" alt="Dokumentasi Program 10 - foto 3" loading="lazy" class="program-img h-full w-full shrink-0 snap-center object-cover" />
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold">Nama Program 10</h3>
+            <p class="mt-2 leading-relaxed">Deskripsi singkat program kerja.</p>
+          </div>
+        </article>
+ 
+        <!-- Program 11 -->
+        <article class="reveal program-card group overflow-hidden rounded-2xl bg-white shadow-sm" style="--d: 0ms">
+          <div class="relative">
+            <div class="slider flex aspect-video w-full snap-x snap-mandatory overflow-x-auto bg-navy/10">
+              <img src="dist/img/program/program-11-1.jpg" alt="Dokumentasi Program 11 - foto 1" loading="lazy" class="program-img h-full w-full shrink-0 snap-center object-cover" />
+              <img src="dist/img/program/program-11-2.jpg" alt="Dokumentasi Program 11 - foto 2" loading="lazy" class="program-img h-full w-full shrink-0 snap-center object-cover" />
+              <img src="dist/img/program/program-11-3.jpg" alt="Dokumentasi Program 11 - foto 3" loading="lazy" class="program-img h-full w-full shrink-0 snap-center object-cover" />
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold">Nama Program 11</h3>
+            <p class="mt-2 leading-relaxed">Deskripsi singkat program kerja.</p>
+          </div>
+        </article>
+ 
+        <!-- Program 12 -->
+        <article class="reveal program-card group overflow-hidden rounded-2xl bg-white shadow-sm" style="--d: 100ms">
+          <div class="relative">
+            <div class="slider flex aspect-video w-full snap-x snap-mandatory overflow-x-auto bg-navy/10">
+              <img src="dist/img/program/program-12-1.jpg" alt="Dokumentasi Program 12 - foto 1" loading="lazy" class="program-img h-full w-full shrink-0 snap-center object-cover" />
+              <img src="dist/img/program/program-12-2.jpg" alt="Dokumentasi Program 12 - foto 2" loading="lazy" class="program-img h-full w-full shrink-0 snap-center object-cover" />
+              <img src="dist/img/program/program-12-3.jpg" alt="Dokumentasi Program 12 - foto 3" loading="lazy" class="program-img h-full w-full shrink-0 snap-center object-cover" />
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold">Nama Program 12</h3>
+            <p class="mt-2 leading-relaxed">Deskripsi singkat program kerja.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+<section id="kontak" class="bg-cream px-6 pb-24 pt-28 text-navy">
+    <div class="mx-auto max-w-2xl">
+ 
+      <header class="reveal text-center">
+        <h2 class="text-3xl font-bold sm:text-4xl lg:text-5xl">Hubungi Kami</h2>
+        <h3 class="mt-4 text-lg sm:text-xl">Mari Berkolaborasi dengan HME</h3>
+      </header>
+ 
+      <!-- Form: latar navy transparansi 50% -->
+      <form
+        id="contact-form"
+        data-email="email@contoh.com"
+        class="reveal mt-16 rounded-2xl p-8 sm:p-10"
+        novalidate
+      >
+        <div>
+          <label for="nama" class="block font-semibold">Nama</label>
+          <input
+            id="nama" name="nama" type="text" required autocomplete="name"
+            placeholder="Nama lengkap"
+            class="mt-2 w-full rounded-xl bg-white/90 px-4 py-3 text-navy placeholder:text-navy/50 focus:outline-none focus:ring-2 focus:ring-navy"
+          />
+        </div>
+ 
+        <div class="mt-6">
+          <label for="email" class="block font-semibold">Email</label>
+          <input
+            id="email" name="email" type="email" required autocomplete="email"
+            placeholder="nama@email.com"
+            class="mt-2 w-full rounded-xl bg-white/90 px-4 py-3 text-navy placeholder:text-navy/50 focus:outline-none focus:ring-2 focus:ring-navy"
+          />
+        </div>
+ 
+        <div class="mt-6">
+          <label for="pesan" class="block font-semibold">Pesan</label>
+          <textarea
+            id="pesan" name="pesan" rows="5" required
+            placeholder="Tulis pesanmu di sini"
+            class="mt-2 w-full resize-none rounded-xl bg-white/90 px-4 py-3 text-navy placeholder:text-navy/50 focus:outline-none focus:ring-2 focus:ring-navy"
+          ></textarea>
+        </div>
+ 
+        <button
+          type="submit"
+          class="mt-8 w-full rounded-full bg-navy px-8 py-3 font-semibold text-cream transition duration-300 hover:bg-brand hover:text-navy focus:outline-none focus-visible:ring-4 focus-visible:ring-navy/40"
+        >
+          Kirim Pesan
+        </button>
+ 
+        <p id="form-status" class="mt-4 min-h-6 text-center text-sm font-medium" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-navy text-cream">
+    <div class="mx-auto max-w-6xl px-6 py-14">
+      <div class="grid items-start gap-10 text-center md:grid-cols-3">
+ 
+        <!-- Kiri: tautan menu -->
+        <nav aria-label="Tautan footer" class="md:text-left">
+          <h3 class="text-lg font-bold">Menu</h3>
+          <ul class="mt-4 space-y-3">
+            <li><a href="#beranda" class="footer-link">Beranda</a></li>
+            <li><a href="#tentang" class="footer-link">Tentang</a></li>
+            <li><a href="#program" class="footer-link">Program</a></li>
+            <li><a href="#kontak" class="footer-link">Kontak</a></li>
+          </ul>
+        </nav>
+ 
+        <!-- Tengah: identitas + sosial media -->
+        <div>
+          <p class="text-2xl font-extrabold tracking-wide">HME FT UNTIRTA 2026</p>
+          <p class="mt-1 text-lg font-semibold text-brand">#KabinetNovatera</p>
+ 
+          <ul class="mt-6 flex items-center justify-center gap-4">
+            <li>
+              <a href="https://instagram.com/hme_ftuntirta?rpxt=NGhlbXAyZ2VmYmJy" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="social-link">
+                 <svg role="img" width="20" class="fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <title>Instagram</title>
+                <path
+                  d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"
+                />
+              </svg>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.tiktok.com/@hme_ftuntirta?_r=1&_t=ZS-9AY4SZf0R5r" target="_blank" rel="noopener noreferrer" aria-label="Tiktok" class="social-link">
+                <svg role="img" width="20" class="fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <title>TikTok</title>
+                <path
+                  d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"
+                />
+              </svg>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/in/hme-ft-untirta-549566246" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="social-link">
+                <svg role="img" width="20" class="fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <title>LinkedIn</title>
+                <path
+                  d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+                />
+              </svg>
+              </a>
+            </li>
+          </ul>
+        </div>
+ 
+        <!-- Kanan: kontak -->
+        <address class="not-italic md:text-right">
+          <h3 class="text-lg font-bold">Kontak</h3>
+          <dl class="mt-4 space-y-4">
+            <div>
+              <dt class="font-semibold">Alamat</dt>
+              <dd class="mt-1 text-cream/80">Jl. Jendral Soedirman KM. 3 Cilegon 42435 Provinsi Banten</dd>
+            </div>
+            <div>
+              <dt class="font-semibold">Email</dt>
+              <dd class="mt-1"><a href="mailto:ftuntirtahme@gmail.com" class="footer-link">ftuntirtahme@gmail.com</a></dd>
+            </div>
+            <div>
+              <dt class="font-semibold">Narahubung</dt>
+              <dd class="mt-1"><a href="tel:+6289604149096" class="footer-link">+6289604149096 (Derry)</a></dd>
+            </div>
+          </dl>
+        </address>
+      </div>
+ 
+      <!-- Paling bawah -->
+      <div class="mt-12 border-t border-cream/15 pt-6 text-center text-sm text-cream/70">
+        Made by Kabinet Novatera HME FT Untirta 2026
+      </div>
+    </div>
+  </footer>
+
+  <script src="dist/js/script.js"></script>
+</body>
+</html>

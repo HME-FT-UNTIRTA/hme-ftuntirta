@@ -1,0 +1,326 @@
+@import "tailwindcss";
+
+/* Scan file HTML dan JS untuk class Tailwind */
+@source "../index.html";
+@source "../js/**/*.js";
+
+@theme {
+  --font-display: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  --color-brand: #f5b800;
+  --color-brand-light: #ffd54a;
+  --color-navy: #0b243f;   /* warna teks navbar saat di-scroll */
+  --color-cream: #f4ebdc;  /* latar navbar & menu saat menu mobile terbuka */
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* 0 = bagian atas section tepat di pucuk layar (di bawah navbar transparan),
+       sehingga section di atasnya tidak ikut terlihat */
+    scroll-padding-top: 0;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
+
+@layer components {
+  /* ---------- Navbar ---------- */
+  /* Default (di atas hero): transparan, teks putih */
+  #navbar {
+    color: #fff;
+    --nav-underline: var(--color-brand);
+  }
+
+  /* Setelah di-scroll: tetap transparan, teks berubah menjadi navy */
+  #navbar.is-scrolled {
+    color: var(--color-navy);
+    --nav-underline: var(--color-navy);
+  }
+
+  /* Panel menu mobile: latar krem (via class bg-cream), teks & garis navy */
+  #mobile-menu {
+    --nav-underline: var(--color-navy);
+  }
+
+  .nav-link {
+    position: relative;
+    display: inline-block;
+    padding-block: 0.25rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: color-mix(in srgb, currentColor 80%, transparent);
+    transition: color 0.2s ease;
+  }
+
+  .nav-link:hover,
+  .nav-link.is-active {
+    color: currentColor;
+  }
+
+  /* Garis penanda di bawah menu: tumbuh dari kiri ke kanan saat hover / menu dipilih */
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    height: 2px;
+    width: 100%;
+    background-color: var(--nav-underline);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+
+  /* Garis muncul saat hover dan tetap pada menu yang dipilih (diklik) */
+  .nav-link:hover::after,
+  .nav-link.is-active::after {
+    transform: scaleX(1);
+  }
+
+  .nav-link:focus-visible {
+    outline: 2px solid var(--nav-underline);
+    outline-offset: 4px;
+  }
+
+  /* Menu desktop: teks selalu navy (#0b243f) */
+  .desktop-menu {
+    --nav-underline: var(--color-navy);
+  }
+
+  .desktop-menu .nav-link {
+    color: color-mix(in srgb, var(--color-navy) 85%, transparent);
+  }
+
+  .desktop-menu .nav-link:hover,
+  .desktop-menu .nav-link.is-active {
+    color: var(--color-navy);
+  }
+
+  /* Tulisan "Kabinet Novatera" bisa menyusut (dipakai di desktop saat scroll) */
+  .brand-text {
+    display: inline-block;
+    max-width: 16rem;
+    overflow: hidden;
+    white-space: nowrap;
+    transition: max-width 0.3s ease, opacity 0.3s ease;
+  }
+
+  /* Desktop + di-scroll: hanya logo yang tampil */
+  @media (min-width: 768px) {
+    #navbar.is-scrolled .brand-text {
+      max-width: 0;
+      opacity: 0;
+    }
+  }
+
+  /* ---------- Animasi muncul saat di-scroll ---------- */
+  .reveal {
+    opacity: 0;
+    transform: translateY(1.5rem);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+    transition-delay: var(--d, 0ms);
+  }
+
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .dept-card {
+    transition: opacity 0.7s ease, transform 0.7s ease, box-shadow 0.3s ease;
+    transition-delay: var(--d, 0ms), var(--d, 0ms), 0ms;
+  }
+
+  .dept-card.is-visible:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgb(11 36 63 / 0.18);
+  }
+
+  .dept-card:focus-visible {
+    outline: 3px solid var(--color-navy);
+    outline-offset: 3px;
+  }
+
+  /* Foto menggelap saat hover / fokus, lalu nama departemen muncul di bawah */
+  .dept-overlay {
+    background-color: rgb(11 36 63 / 0.7);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .dept-name {
+    opacity: 0;
+    transform: translateY(0.75rem);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  .dept-card:hover .dept-overlay,
+  .dept-card:focus-visible .dept-overlay {
+    opacity: 1;
+  }
+
+  .dept-card:hover .dept-name,
+  .dept-card:focus-visible .dept-name {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Layar sentuh tidak punya hover: nama selalu tampil di dasar foto */
+  @media (hover: none) {
+    .dept-overlay {
+      opacity: 1;
+      background: linear-gradient(to top, rgb(11 36 63 / 0.85), transparent 55%);
+    }
+    .dept-name {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  /* ---------- Program: card + slider ---------- */
+  .program-card {
+    transition: opacity 0.7s ease, transform 0.7s ease, box-shadow 0.3s ease;
+    transition-delay: var(--d, 0ms), var(--d, 0ms), 0ms;
+  }
+
+  /* Hover (mouse) dan sentuhan (layar sentuh, class is-touched dari JS) */
+  .program-card.is-visible:hover,
+  .program-card.is-visible.is-touched {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 32px rgb(11 36 63 / 0.15);
+  }
+
+  .slider {
+    scrollbar-width: none;
+    overscroll-behavior-x: contain;
+  }
+
+  .slider::-webkit-scrollbar {
+    display: none;
+  }
+
+  .slide-btn {
+    position: absolute;
+    top: 50%;
+    z-index: 1;
+    display: flex;
+    height: 2.25rem;
+    width: 2.25rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    background-color: rgb(255 255 255 / 0.9);
+    color: var(--color-navy);
+    box-shadow: 0 2px 8px rgb(0 0 0 / 0.2);
+    opacity: 0;
+    pointer-events: none; /* tidak bisa ter-klik saat tersembunyi */
+    transform: translateY(-50%);
+    transition: opacity 0.25s ease, background-color 0.2s ease;
+  }
+
+  /* Ukuran ikon panah (dibuat lewat JS, jadi tidak bergantung pada scan class Tailwind) */
+  .slide-btn svg {
+    height: 1rem;
+    width: 1rem;
+  }
+
+  .slide-btn:hover {
+    background-color: #fff;
+  }
+
+  .slide-prev { left: 0.75rem; }
+  .slide-next { right: 0.75rem; }
+
+  /* Panah muncul saat hover, saat card disentuh, atau saat difokus keyboard */
+  .program-card:hover .slide-btn,
+  .program-card.is-touched .slide-btn,
+  .slide-btn:focus-visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .slide-dots {
+    position: absolute;
+    bottom: 0.75rem;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    gap: 0.4rem;
+  }
+
+  .slide-dot {
+    height: 0.5rem;
+    width: 0.5rem;
+    border-radius: 9999px;
+    background-color: rgb(255 255 255 / 0.6);
+    box-shadow: 0 0 3px rgb(0 0 0 / 0.4);
+    transition: width 0.3s ease, background-color 0.3s ease;
+  }
+
+  .slide-dot.is-active {
+    width: 1.25rem;
+    background-color: #fff;
+  }
+
+  /* ---------- Footer ---------- */
+  .footer-link {
+    color: color-mix(in srgb, var(--color-cream) 80%, transparent);
+    transition: color 0.2s ease;
+  }
+
+  .footer-link:hover,
+  .footer-link:focus-visible {
+    color: var(--color-brand);
+  }
+
+  .social-link {
+    display: flex;
+    height: 2.75rem;
+    width: 2.75rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    border: 1px solid color-mix(in srgb, var(--color-cream) 35%, transparent);
+    color: var(--color-cream);
+    transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+  }
+
+  .social-link:hover,
+  .social-link:focus-visible {
+    background-color: var(--color-brand);
+    border-color: var(--color-brand);
+    color: var(--color-navy);
+    transform: translateY(-3px);
+  }
+
+  /* ---------- Animasi masuk hero ---------- */
+  .hero-item {
+    opacity: 0;
+    transform: translateY(1.25rem);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .hero-item.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-item,
+    .reveal {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+    .nav-link::after,
+    .brand-text {
+      transition: none;
+    }
+  }
+}
