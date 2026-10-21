@@ -23,12 +23,142 @@ document.addEventListener("DOMContentLoaded", () => {
     img.addEventListener("error", () => (img.style.visibility = "hidden"));
   });
 
-  /* ===== PROGRAM: slider pada setiap card ===== */
-  document.querySelectorAll(".program-card").forEach((card) => {
-    const slider = card.querySelector(".slider");
-    const slides = slider.querySelectorAll("img");
+  /* ===== DATA POP UP DEPARTEMEN (edit isi di sini) =====
+     foto     : daftar foto untuk slide. Tiap foto yang ada = 1 slide (yang filenya belum ada otomatis dilewati)
+     deskripsi: penjelasan singkat departemen
+     program  : daftar program kerja (tiap item tampil sebagai label bulat) */
+  const DEPT_DATA = {
+    bph: {
+      foto: [
+        "dist/img/bph.jpeg",
+        "dist/img/bph.jpeg",
+        "dist/img/departemen/bph-3.jpg",
+      ],
+      deskripsi: "Badan Pengurus Harian (BPH) di HME berperan sebagai penggerak utama dan pusat kendali organisasi. ",
+      program: ["PDOHME", "Open Recruitment", "Rapat Kerja", "Musyawarah Mahasiswa", "Rapat Akhir Kepengurusan"],
+    },
+    kesekretariatan: {
+      foto: [
+        "dist/img/kestari.jpeg",
+        "dist/img/departemen/kesekretariatan-2.jpg",
+        "dist/img/departemen/kesekretariatan-3.jpg",
+      ],
+      deskripsi: "Divisi Kesekretariatan merupakan, suatu divisi yang bertugas untuk membantu sekretaris umum dalam menaungi terkait surat menyurat, pengarsipan, serta pendataan inventaris Himpunan Mahasiswa Elektro.",
+      program: ["Pengarsipan", "Piket PKM", "Inventarisasi"],
+    },
+    bume: {
+      foto: [
+        "dist/img/bume.jpeg",
+        "dist/img/departemen/bume-2.jpg",
+        "dist/img/departemen/bume-3.jpg",
+      ],
+      deskripsi: "Divisi Badan Usaha Milik Elektro merupakan, suatu divisi kewirausahaan yang berfokus pada pengembangan usaha, kreatifitas, dan kemandirian finansial dari Himpunan Mahasiswa Elektro.",
+      program: ["Pembuatan PDH", "Pembuatan Merchandise HME", "Pembuatan Modul Praktikum"],
+    },
+    kaderisasi: {
+      foto: [
+        "dist/img/kaderisasi.jpeg",
+        "dist/img/departemen/kaderisasi-2.jpg",
+        "dist/img/departemen/kaderisasi-3.jpg",
+      ],
+      deskripsi: "Departemen Kaderisasi adalah bagian penting dalam Himpunan Mahasiswa Elektro yang berperan strategis dalam regenerasi dan pengembangan sumber daya manusia di Teknik Elektro Untirta. Departemen ini bertugas mencetak kader berkompeten, berkarakter, dan berintegritas yang aktif berkontribusi di organisasi dan masyarakat.",
+      program: ["Hiring Ketua Pelaksana", "Musyawarah Kaderisasi", "WTHME 2025", "LKHME 2025", "Monitoring & Evaluasi", "Pendelegasian"],
+    },
+    internal: {
+      foto: [
+        "dist/img/internal.jpeg",
+        "dist/img/departemen/internal-2.jpg",
+        "dist/img/departemen/internal-3.jpg",
+      ],
+      deskripsi: "Departemen Internal merupakan departemen yang berperan sebagai penghubung antara mahasiswa Teknik Elektro FT UNTIRTA dengan jurusan dan pihak terkait dalam lingkungan akademik.",
+      program: ["PINTAR", "SAPA", "AKSES", "KAWAL", "E-Talk", "Kajian Rohani"],
+    },
+    eksternal: {
+      foto: [
+        "dist/img/eksternal.jpeg",
+        "dist/img/departemen/eksternal-2.jpg",
+        "dist/img/departemen/eksternal-3.jpg",
+      ],
+      deskripsi: "Departemen Internal merupakan departemen yang berperan sebagai penghubung antara mahasiswa Teknik Elektro FT UNTIRTA dengan jurusan dan pihak terkait dalam lingkungan akademik.",
+      program: ["Penjemputan Wisudawan", "Studi Banding", "ELRUMI", "Galang Dana", "Bina Desa", "Elektro Goes To School"],
+    },
+    psdm: {
+      foto: [
+        "dist/img/psdm.jpeg",
+        "dist/img/departemen/psdm-2.jpg",
+        "dist/img/departemen/psdm-3.jpg",
+      ],
+      deskripsi: "Deskripsi singkat tentang PSDM.",
+      program: ["Program kerja 1", "Program kerja 2", "Program kerja 3"],
+    },
+    medfokom: {
+      foto: [
+        "dist/img/medfokom.jpeg",
+        "dist/img/departemen/medfokom-2.jpg",
+        "dist/img/departemen/medfokom-3.jpg",
+      ],
+      deskripsi: "Deskripsi singkat tentang Medfokom.",
+      program: ["Foto Kabinet", "INFOMETRO", "Publikasi Hari Ulang Tahun Pengurus", "Peringatan Hari Besar", "Pengelolaan Sosial Media", "Pengembangan Web"],
+    },
+  };
+
+  /* ===== Geser dengan mouse (di layar sentuh sudah bisa digeser dengan jari) ===== */
+  const enableDrag = (slider) => {
+    if (slider._dragReady) return;
+    slider._dragReady = true;
+
+    slider.addEventListener("pointerdown", (e) => {
+      if (e.pointerType !== "mouse" || e.button !== 0) return;
+
+      const width = slider.clientWidth;
+      const total = slider.querySelectorAll("img").length;
+      const startX = e.clientX;
+      const startLeft = slider.scrollLeft;
+      const startIndex = Math.round(startLeft / width);
+      let moved = false;
+
+      const onMove = (ev) => {
+        const dx = ev.clientX - startX;
+        if (!moved && Math.abs(dx) > 4) {
+          moved = true;
+          slider.classList.add("is-dragging");
+        }
+        if (moved) slider.scrollLeft = startLeft - dx;
+      };
+
+      const onUp = (ev) => {
+        window.removeEventListener("pointermove", onMove);
+        window.removeEventListener("pointerup", onUp);
+        window.removeEventListener("pointercancel", onUp);
+        if (!moved) return;
+
+        const dx = ev.clientX - startX;
+        let index = startIndex;
+        if (dx < -width * 0.15) index += 1; // geser ke kiri = foto berikutnya
+        if (dx > width * 0.15) index -= 1;  // geser ke kanan = foto sebelumnya
+        index = Math.max(0, Math.min(total - 1, index));
+
+        slider.classList.remove("is-dragging");
+        slider.scrollTo({ left: index * width, behavior: "smooth" });
+      };
+
+      window.addEventListener("pointermove", onMove);
+      window.addEventListener("pointerup", onUp);
+      window.addEventListener("pointercancel", onUp);
+    });
+  };
+
+  /* ===== SLIDER: panah, titik penanda, dan geser (dipakai card Program & pop up) ===== */
+  // showAlways = true: tombol panah tetap tampil walau hanya 1 foto (dalam keadaan nonaktif)
+  const buildSlider = (slider, showAlways = false) => {
     const wrap = slider.parentElement;
-    if (slides.length < 2) return;
+    wrap.querySelectorAll(".slide-btn, .slide-dots").forEach((el) => el.remove());
+    if (slider._onScroll) slider.removeEventListener("scroll", slider._onScroll);
+    slider.classList.remove("is-swipeable");
+
+    const slides = slider.querySelectorAll("img");
+    const single = slides.length < 2;
+    if (single && !showAlways) return;
 
     const chevron = (d) =>
       `<svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="${d}"/></svg>`;
@@ -53,6 +183,15 @@ document.addEventListener("DOMContentLoaded", () => {
       dots.appendChild(dot);
     });
 
+    if (single) {
+      prev.disabled = true;
+      next.disabled = true;
+      wrap.append(prev, next);
+      return;
+    }
+
+    slider.classList.add("is-swipeable");
+    enableDrag(slider);
     wrap.append(prev, next, dots);
 
     const current = () => Math.round(slider.scrollLeft / slider.clientWidth);
@@ -67,9 +206,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     prev.addEventListener("click", () => goTo(current() - 1));
     next.addEventListener("click", () => goTo(current() + 1));
+    slider._onScroll = updateDots;
     slider.addEventListener("scroll", updateDots, { passive: true });
     updateDots();
-  });
+  };
+
+  /* ===== PROGRAM: slider pada setiap card ===== */
+  document.querySelectorAll(".program-card .slider").forEach(buildSlider);
 
   /* Sentuhan di layar sentuh: card yang disentuh mendapat efek hover + panah slide */
   const programCards = document.querySelectorAll(".program-card");
@@ -78,6 +221,124 @@ document.addEventListener("DOMContentLoaded", () => {
     const hit = e.target.closest(".program-card");
     programCards.forEach((c) => c.classList.toggle("is-touched", c === hit));
   });
+
+  /* ===== STRUKTUR: pop up departemen saat card diklik ===== */
+  const modal = document.getElementById("dept-modal");
+
+  if (modal) {
+    const mSlider = document.getElementById("dept-modal-slider");
+    const mTitle = document.getElementById("dept-modal-title");
+    const mDesc = document.getElementById("dept-modal-desc");
+    const mList = document.getElementById("dept-modal-programs");
+    const mClose = modal.querySelector(".dept-modal-close");
+    let lastFocus = null;
+    let token = 0;
+
+    // Cek foto yang benar-benar ada; yang tidak ada dilewati
+    const loadImage = (src) =>
+      new Promise((resolve) => {
+        const im = new Image();
+        im.onload = () => resolve(src);
+        im.onerror = () => resolve(null);
+        im.src = src;
+      });
+
+    const openModal = async (card) => {
+      const data = DEPT_DATA[card.dataset.dept] || {};
+      const name = card.querySelector(".dept-name").textContent.trim();
+      lastFocus = card;
+
+      mTitle.textContent = name;
+      mDesc.textContent = data.deskripsi || "Deskripsi belum tersedia.";
+      mList.innerHTML = "";
+      (data.program || []).forEach((item) => {
+        const li = document.createElement("li");
+        li.className = "program-chip";
+        li.textContent = item;
+        mList.appendChild(li);
+      });
+      mSlider.innerHTML = "";
+      mSlider.scrollLeft = 0;
+
+      modal.classList.add("is-open");
+      modal.setAttribute("aria-hidden", "false");
+      document.documentElement.classList.add("modal-open");
+      mClose.focus();
+
+      // Isi slide setelah foto selesai dicek
+      const mine = ++token;
+      const results = await Promise.all((data.foto || []).map(loadImage));
+      if (mine !== token) return; // pop up sudah ditutup / diganti
+      let sources = results.filter(Boolean);
+
+      // Bantuan: tampilkan di console foto mana yang tidak ditemukan
+      const missing = (data.foto || []).filter((_, i) => !results[i]);
+      if (missing.length) console.warn(`[Pop up ${name}] Foto tidak ditemukan (dilewati):`, missing);
+
+      if (!sources.length) sources = [card.querySelector(".dept-img").getAttribute("src")];
+
+      sources.forEach((src, i) => {
+        const img = document.createElement("img");
+        img.src = src;
+        img.alt = `${name} - foto ${i + 1}`;
+        img.className = "h-full w-full shrink-0 snap-center object-cover";
+        img.draggable = false;
+        mSlider.appendChild(img);
+      });
+      buildSlider(mSlider, true);
+    };
+
+    const closeModal = () => {
+      token++;
+      modal.classList.remove("is-open");
+      modal.setAttribute("aria-hidden", "true");
+      document.documentElement.classList.remove("modal-open");
+      if (lastFocus) lastFocus.focus();
+    };
+
+    document.querySelectorAll(".dept-card[data-dept]").forEach((card) => {
+      card.addEventListener("click", () => openModal(card));
+      card.addEventListener("keydown", (e) => {
+        if (e.target !== card) return;
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          openModal(card);
+        }
+      });
+    });
+
+    // Tutup: tombol X, klik di luar panel, atau tombol Esc
+    modal.addEventListener("click", (e) => {
+      if (e.target.closest("[data-close]")) closeModal();
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (!modal.classList.contains("is-open")) return;
+
+      if (e.key === "Escape") {
+        closeModal();
+        return;
+      }
+
+      // Panah kiri / kanan = foto sebelumnya / berikutnya
+      if (e.key === "ArrowLeft") modal.querySelector(".slide-prev")?.click();
+      if (e.key === "ArrowRight") modal.querySelector(".slide-next")?.click();
+
+      // Fokus keyboard tetap berada di dalam pop up
+      if (e.key === "Tab") {
+        const focusable = [...modal.querySelectorAll("button")];
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
+    });
+  }
 
   /* ===== KONTAK: form (membuka aplikasi email dengan pesan terisi) ===== */
   const form = document.getElementById("contact-form");
@@ -139,7 +400,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const iconClose = document.getElementById("icon-close");
 
   const setMenu = (open) => {
-    mobileMenu.classList.toggle("hidden", !open);
     iconOpen.classList.toggle("hidden", open);
     iconClose.classList.toggle("hidden", !open);
     toggle.setAttribute("aria-expanded", String(open));
@@ -148,7 +408,7 @@ document.addEventListener("DOMContentLoaded", () => {
     navbar.classList.toggle("is-menu-open", open);
   };
 
-  toggle.addEventListener("click", () => setMenu(mobileMenu.classList.contains("hidden")));
+  toggle.addEventListener("click", () => setMenu(!navbar.classList.contains("is-menu-open")));
   mobileMenu.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => setMenu(false)));
 
   // Tutup menu mobile otomatis jika layar dilebarkan ke ukuran desktop

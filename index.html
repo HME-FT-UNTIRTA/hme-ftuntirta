@@ -47,13 +47,17 @@
     </nav>
  
     <!-- Menu mobile -->
-    <div id="mobile-menu" class="hidden border-t border-navy/10 bg-cream px-6 py-4 text-navy md:hidden">
-      <ul class="flex flex-col gap-4">
-        <li><a href="#beranda" class="nav-link">Beranda</a></li>
-        <li><a href="#tentang" class="nav-link">Tentang</a></li>
-        <li><a href="#program" class="nav-link">Program</a></li>
-        <li><a href="#kontak"  class="nav-link">Kontak</a></li>
-      </ul>
+    <div id="mobile-menu" class="mobile-menu bg-cream text-navy md:hidden">
+      <div class="mobile-menu-inner">
+        <div class="border-t border-navy/10 px-6 py-4">
+          <ul class="flex flex-col gap-4">
+            <li><a href="#beranda" class="nav-link">Beranda</a></li>
+            <li><a href="#tentang" class="nav-link">Tentang</a></li>
+            <li><a href="#program" class="nav-link">Program</a></li>
+            <li><a href="#kontak"  class="nav-link">Kontak</a></li>
+          </ul>
+        </div>
+      </div>
     </div>
   </header>
   <!-- Navbar End -->
@@ -130,7 +134,7 @@
       
           
           <!-- BPH -->
-          <article tabindex="0" class="reveal dept-card group relative aspect-4/5 w-full overflow-hidden rounded-2xl bg-navy/10 shadow-sm sm:w-[calc(50%-0.75rem)] lg:w-[calc(25%-1.125rem)]" style="--d: 0ms">
+          <article tabindex="0" role="button" aria-haspopup="dialog" data-dept="bph" class="reveal dept-card group relative aspect-4/5 w-full overflow-hidden rounded-2xl bg-navy/10 shadow-sm sm:w-[calc(50%-0.75rem)] lg:w-[calc(25%-1.125rem)]" style="--d: 0ms">
             <img src="dist/img/bph.jpeg" alt="Badan Pengurus Harian" loading="lazy" class="dept-img absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
             <div class="dept-overlay absolute inset-0"></div>
             <h4 class="dept-name absolute inset-x-0 bottom-0 p-5 text-center text-lg font-bold text-white">Badan Pengurus Harian</h4>
@@ -138,7 +142,7 @@
           <!-- BPH -->
 
           <!-- Kestari -->
-          <article tabindex="0" class="reveal dept-card group relative aspect-4/5 w-full overflow-hidden rounded-2xl bg-navy/10 shadow-sm sm:w-[calc(50%-0.75rem)] lg:w-[calc(25%-1.125rem)]" style="--d: 100ms">
+          <article tabindex="0" role="button" aria-haspopup="dialog" data-dept="kesekretariatan" class="reveal dept-card group relative aspect-4/5 w-full overflow-hidden rounded-2xl bg-navy/10 shadow-sm sm:w-[calc(50%-0.75rem)] lg:w-[calc(25%-1.125rem)]" style="--d: 100ms">
             <img src="dist/img/kestari.jpeg" alt="Kesekretariatan" loading="lazy" class="dept-img absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
             <div class="dept-overlay absolute inset-0"></div>
             <h4 class="dept-name absolute inset-x-0 bottom-0 p-5 text-center text-lg font-bold text-white">Kesekretariatan</h4>
@@ -146,7 +150,7 @@
           <!-- Kestari -->
 
           <!-- BUME -->
-          <article tabindex="0" class="reveal dept-card group relative aspect-4/5 w-full overflow-hidden rounded-2xl bg-navy/10 shadow-sm sm:w-[calc(50%-0.75rem)] lg:w-[calc(25%-1.125rem)]" style="--d: 200ms">
+          <article tabindex="0" role="button" aria-haspopup="dialog" data-dept="bume" class="reveal dept-card group relative aspect-4/5 w-full overflow-hidden rounded-2xl bg-navy/10 shadow-sm sm:w-[calc(50%-0.75rem)] lg:w-[calc(25%-1.125rem)]" style="--d: 200ms">
             <img src="dist/img/bume.jpeg" alt="BUME" loading="lazy" class="dept-img absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
             <div class="dept-overlay absolute inset-0"></div>
             <h4 class="dept-name absolute inset-x-0 bottom-0 p-5 text-center text-lg font-bold text-white">BUME</h4>
@@ -154,7 +158,7 @@
           <!-- BUME -->
           
           <!-- Kaderisasi -->
-          <article tabindex="0" class="reveal dept-card group relative aspect-4/5 w-full overflow-hidden rounded-2xl bg-navy/10 shadow-sm sm:w-[calc(50%-0.75rem)] lg:w-[calc(25%-1.125rem)]" style="--d: 300ms">
+          <article tabindex="0" role="button" aria-haspopup="dialog" data-dept="kaderisasi" class="reveal dept-card group relative aspect-4/5 w-full overflow-hidden rounded-2xl bg-navy/10 shadow-sm sm:w-[calc(50%-0.75rem)] lg:w-[calc(25%-1.125rem)]" style="--d: 300ms">
             <img src="dist/img/kaderisasi.jpeg" alt="Kaderisasi" loading="lazy" class="dept-img absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
             <div class="dept-overlay absolute inset-0"></div>
             <h4 class="dept-name absolute inset-x-0 bottom-0 p-5 text-center text-lg font-bold text-white">Kaderisasi</h4>
@@ -162,7 +166,7 @@
           <!-- Kaderisasi -->
 
           <!-- Internal -->
-          <article tabindex="0" class="reveal dept-card group relative aspect-4/5 w-full overflow-hidden rounded-2xl bg-navy/10 shadow-sm sm:w-[calc(50%-0.75rem)] lg:w-[calc(25%-1.125rem)]" style="--d: 0ms">
+          <article tabindex="0" role="button" aria-haspopup="dialog" data-dept="internal" class="reveal dept-card group relative aspect-4/5 w-full overflow-hidden rounded-2xl bg-navy/10 shadow-sm sm:w-[calc(50%-0.75rem)] lg:w-[calc(25%-1.125rem)]" style="--d: 0ms">
             <img src="dist/img/internal.jpeg" alt="Internal" loading="lazy" class="dept-img absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
             <div class="dept-overlay absolute inset-0"></div>
             <h4 class="dept-name absolute inset-x-0 bottom-0 p-5 text-center text-lg font-bold text-white">Internal</h4>
@@ -170,15 +174,15 @@
           <!-- Internal -->
 
           <!-- Eksternal -->
-          <article tabindex="0" class="reveal dept-card group relative aspect-4/5 w-full overflow-hidden rounded-2xl bg-navy/10 shadow-sm sm:w-[calc(50%-0.75rem)] lg:w-[calc(25%-1.125rem)]" style="--d: 100ms">
-            <img src="dist/img/eksternal.jpeg" alt="PSDM" loading="lazy" class="dept-img absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+          <article tabindex="0" role="button" aria-haspopup="dialog" data-dept="eksternal" class="reveal dept-card group relative aspect-4/5 w-full overflow-hidden rounded-2xl bg-navy/10 shadow-sm sm:w-[calc(50%-0.75rem)] lg:w-[calc(25%-1.125rem)]" style="--d: 100ms">
+            <img src="dist/img/eksternal.jpeg" alt="Eksternal" loading="lazy" class="dept-img absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
             <div class="dept-overlay absolute inset-0"></div>
             <h4 class="dept-name absolute inset-x-0 bottom-0 p-5 text-center text-lg font-bold text-white">Eksternal</h4>
           </article>
           <!-- Eksternal -->
 
           <!-- PSDM -->
-          <article tabindex="0" class="reveal dept-card group relative aspect-4/5 w-full overflow-hidden rounded-2xl bg-navy/10 shadow-sm sm:w-[calc(50%-0.75rem)] lg:w-[calc(25%-1.125rem)]" style="--d: 200ms">
+          <article tabindex="0" role="button" aria-haspopup="dialog" data-dept="psdm" class="reveal dept-card group relative aspect-4/5 w-full overflow-hidden rounded-2xl bg-navy/10 shadow-sm sm:w-[calc(50%-0.75rem)] lg:w-[calc(25%-1.125rem)]" style="--d: 200ms">
             <img src="dist/img/psdm.jpeg" alt="PSDM" loading="lazy" class="dept-img absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
             <div class="dept-overlay absolute inset-0"></div>
             <h4 class="dept-name absolute inset-x-0 bottom-0 p-5 text-center text-lg font-bold text-white">PSDM</h4>
@@ -186,7 +190,7 @@
           <!-- PSDM -->
 
           <!-- Medfokom -->
-          <article tabindex="0" class="reveal dept-card group relative aspect-4/5 w-full overflow-hidden rounded-2xl bg-navy/10 shadow-sm sm:w-[calc(50%-0.75rem)] lg:w-[calc(25%-1.125rem)]" style="--d: 300ms">
+          <article tabindex="0" role="button" aria-haspopup="dialog" data-dept="medfokom" class="reveal dept-card group relative aspect-4/5 w-full overflow-hidden rounded-2xl bg-navy/10 shadow-sm sm:w-[calc(50%-0.75rem)] lg:w-[calc(25%-1.125rem)]" style="--d: 300ms">
             <img src="dist/img/medfokom.jpeg" alt="Medfokom" loading="lazy" class="dept-img absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
             <div class="dept-overlay absolute inset-0"></div>
             <h4 class="dept-name absolute inset-x-0 bottom-0 p-5 text-center text-lg font-bold text-white">Medfokom</h4>
@@ -529,6 +533,35 @@
       </div>
     </div>
   </footer>
+
+  <!-- POP UP DEPARTEMEN -->
+  <div id="dept-modal" class="dept-modal" role="dialog" aria-modal="true" aria-labelledby="dept-modal-title" aria-hidden="true">
+    <div class="dept-modal-backdrop" data-close></div>
+
+    <div class="dept-modal-panel">
+      <button type="button" class="dept-modal-close" data-close aria-label="Tutup pop up">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+          <path d="M6 6l12 12M18 6L6 18" />
+        </svg>
+      </button>
+
+      <!-- Foto ukuran Instagram 4:5 (bisa digeser), di sisi kiri pada layar lebar -->
+      <div class="dept-modal-media relative shrink-0">
+        <div id="dept-modal-slider" class="slider flex aspect-4/5 w-full snap-x snap-mandatory overflow-x-auto bg-navy/10"></div>
+      </div>
+
+      <!-- Deskripsi + program kerja -->
+      <div class="dept-modal-body">
+        <h3 id="dept-modal-title" class="text-2xl font-bold sm:text-3xl md:pr-10"></h3>
+        <span class="mt-2 block h-1 w-12 rounded-full bg-brand"></span>
+
+        <p id="dept-modal-desc" class="mt-5 leading-relaxed"></p>
+
+        <h4 class="mt-6 text-lg font-bold">Program Kerja</h4>
+        <ul id="dept-modal-programs" class="mt-3 flex flex-wrap gap-2"></ul>
+      </div>
+    </div>
+  </div>
 
   <script src="dist/js/script.js"></script>
 </body>
